@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function Auth() {
     const [mode, setMode] = useState("login");
 
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
     return (
         <div className="page">
@@ -16,14 +22,18 @@ export default function Auth() {
                             <label className="form-label" htmlFor="email">
                                 Email
                             </label>
-                            <input className="form-input" type="email" id="email"/>
+                            <input
+                                className="form-input"
+                                type="email" id="email"
+                                {...register("")}
+                            />
                         </div>
 
                         <div className="form-group">
-                            <label className="form-label"  htmlFor="password">
+                            <label className="form-label" htmlFor="password">
                                 Password
                             </label>
-                            <input className="form-input" type="password" id="password"/>
+                            <input className="form-input" type="password" id="password" />
                         </div>
 
                         <button type="submit" className="btn btn-primary btn-large">
@@ -34,14 +44,14 @@ export default function Auth() {
                     <div className="auth-switch">
                         {mode == "signUp" ? (
                             <p>
-                                Already have an account? 
+                                Already have an account?
                                 <span className="auth-link" onClick={() => setMode("login")}>
                                     Login
                                 </span>
                             </p>
                         ) : (
                             <p>
-                                Don't have an account? 
+                                Don't have an account?
                                 <span className="auth-link" onClick={() => setMode("signUp")}>
                                     Sign Up
                                 </span>
