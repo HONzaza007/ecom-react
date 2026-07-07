@@ -25,7 +25,6 @@ export default function Auth() {
                             <input
                                 className="form-input"
                                 type="email" id="email"
-                                {...register("")}
                             />
                         </div>
 
